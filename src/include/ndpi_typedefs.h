@@ -48,6 +48,12 @@ typedef struct node_t {
   struct node_t *left, *right;
 } ndpi_node;
 
+typedef struct ndpi_dns_t {
+  u_int8_t num_queries, num_answers, ret_code;
+  u_int8_t bad_packet /* the received packet looks bad */;
+  u_int16_t query_type, query_class, rsp_type;
+} ndpi_dns;
+
 typedef u_int32_t ndpi_ndpi_mask;
 
 typedef struct ndpi_protocol_bitmask_struct {
@@ -715,11 +721,7 @@ typedef struct ndpi_flow_struct {
   } http;
 
   union {
-    struct {
-      u_int8_t num_queries, num_answers, ret_code;
-      u_int8_t bad_packet /* the received packet looks bad */;
-      u_int16_t query_type, query_class, rsp_type;
-    } dns;
+    ndpi_dns dns;
    
     struct {
       u_int8_t request_code;

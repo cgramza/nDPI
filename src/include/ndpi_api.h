@@ -196,6 +196,31 @@ extern "C" {
   char* ndpi_revision(void);
   void ndpi_set_automa(struct ndpi_detection_module_struct *ndpi_struct, void* automa);
 
+  /**
+   * Extra APIs
+   */
+  int ndpi_get_parsed_line_count(struct ndpi_flow_struct *flow);
+  u_char* ndpi_get_host_server_name(struct ndpi_flow_struct *flow);
+  int ndpi_get_host_server_name_length(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_line(struct ndpi_flow_struct *flow, int index);
+  struct ndpi_int_one_line_struct* ndpi_get_host_line(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_forwarded_line(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_referer_line(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_content_line(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_accept_line(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_user_agent_line(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_http_url_name(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_http_encoding(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_http_transfer_encoding(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_http_contentlen(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_http_cookie(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_http_origin(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_http_x_session_type(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_server_line(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_http_method_line(struct ndpi_flow_struct *flow);
+  struct ndpi_int_one_line_struct* ndpi_get_http_response(struct ndpi_flow_struct *flow);
+  ndpi_dns* ndpi_get_dns(struct ndpi_flow_struct *flow);
+  
 #define ADD_TO_DETECTION_BITMASK             1
 #define NO_ADD_TO_DETECTION_BITMASK          0
 #define SAVE_DETECTION_BITMASK_AS_UNKNOWN    1

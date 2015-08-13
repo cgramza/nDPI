@@ -4594,4 +4594,159 @@ char* strsep(char **stringp, const char *delim) {
 }
 #endif
 
+/**
+ * Extra APIs
+ */
 
+u_char* ndpi_get_host_server_name(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->host_server_name[0]);
+}
+
+int ndpi_get_host_server_name_length(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return sizeof(flow->host_server_name);
+}
+
+int ndpi_get_parsed_line_count(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return flow->packet.parsed_lines;
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_line(struct ndpi_flow_struct *flow, int index) {
+  if (!flow) {
+    return 0;
+  }
+
+  int lines = ndpi_get_parsed_line_count(flow);
+  if (index < 0 || index >= lines) {
+    return 0;
+  }
+
+  return &(flow->packet.line[index]);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_host_line(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.host_line);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_forwarded_line(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.forwarded_line);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_referer_line(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.referer_line);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_content_line(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.content_line);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_accept_line(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.accept_line);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_user_agent_line(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.user_agent_line);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_http_url_name(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.http_url_name);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_http_encoding(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.http_encoding);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_http_transfer_encoding(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.http_transfer_encoding);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_http_contentlen(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.http_contentlen);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_http_cookie(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.http_cookie);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_http_origin(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.http_origin);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_http_x_session_type(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.http_x_session_type);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_server_line(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.server_line);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_http_method_line(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.http_method);
+}
+
+struct ndpi_int_one_line_struct* ndpi_get_http_response(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->packet.http_response);
+}
+
+ndpi_dns* ndpi_get_dns(struct ndpi_flow_struct *flow) {
+  if (!flow) {
+    return 0;
+  }
+  return &(flow->protos.dns);
+}
